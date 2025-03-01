@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // clear the list before rendering
         shoppingList.innerHTML = '';
     
-        // Update the list display
+        // update list display
         items.forEach((item, index) => {
             const li = document.createElement("li");
             // completed class if item is purchased
@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // function to edit item
-    // need to validate for empty string
     window.editItem=(editIndex) => {
         let editItem = prompt('Edit Item', items[editIndex].name);
         if(editItem === null || editItem === '') {
@@ -67,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         items.push({name:itemText,purchased:false}); // create obj lit and pushing it to the array
-        itemInput.value = ''; // clear the input
+        itemInput.value = ''; // clear input
         renderList();
     });
     renderList(); // initial render

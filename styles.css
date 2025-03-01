@@ -1,11 +1,173 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 :root {
-    --bg-color: #060807;
-    --primary-color: #b3cbbd;
-    --secondary-color: #3f565d;
-    --accent-color: #6d859c;
-    --text-color: #ecf2ee;
+    --bg-color: #03080d;
+    --primary-color: #87bcea;
+    --secondary-color: #105999;
+    --accent-color: #2896f5;
+    --input-border: #e5e7eb33;
+    --input-shadow: #ffffff1a;
+    --text-color: #dde9f4;
     --body-font: 'Plus Jakarta Sans', sans-serif;
+    --min-height: 100vh;
+    --max-width: 600px;
+    --border-radius: 0.7rem;
 }
 
+/*global*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--body-font);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--min-height);
+    line-height: 2.3rem;
+    padding: 1rem;
+}
+
+h1 { /*gradient*/
+    background: #87BCEA;
+    background: linear-gradient(to right, #87BCEA 0%, #105999 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-size: 2.5rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+/*invisible box = container*/
+.list-container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    max-width: var(--max-width);
+}
+
+/*add item bar*/
+.add-input {
+    display: flex;
+    width: 100%;
+    margin-bottom: 1rem;
+    gap: 1.5rem;
+}
+
+.item-input{
+    border: 1px solid var(--input-border);
+    background-color: var(--input-shadow);
+    color: var(--text-color);
+
+    flex: 1;
+    padding: 0.75rem 1rem; /*top-bottom left-right*/
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.item-input:focus{ /*when user clicks it*/
+    outline: none;
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 0 0 1px var(--accent-color);
+}
+
+/*add button*/
+button {
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    transition: all 0.3s;
+}
+
+#purchaseBtn {
+    background: linear-gradient(to right, #87BCEA 0%, #105999 100%);
+    
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+
+    position: relative;
+    overflow: hidden;
+    padding: 0.75rem 1.5rem;
+    z-index: 1;
+}
+
+#purchaseBtn:hover {
+    transition: 0.5s;
+    transform: translateY(-3px);
+    box-shadow: 0px 0px 25px var(--input-border);
+}
+
+
+/*item list*/
+ul {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    margin: 0.75rem 0;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+}
+
+li span {
+    flex: 1; /*takes up all available space*/
+    margin-right: 0.5rem;
+    word-break: break-word;
+}
+
+/*btn actions*/
+li button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-left: 0.3rem;
+    font-size: 18px;
+
+    background: transparent;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+li button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+/*check item*/
+li.completed span {
+    text-decoration: line-through;
+    color: var(--primary-color);
+}
+
+/*responsive*/
+@media (max-width: 640px) {
+    .list-container {
+        padding: 1rem;
+    }
+
+    .add-input {
+        flex-direction: column;
+    }
+
+    #purchaseBtn {
+        width: 100%;
+    }
+}
